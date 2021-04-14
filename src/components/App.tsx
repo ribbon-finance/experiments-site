@@ -1,26 +1,12 @@
 import React from "react";
-import logo from "../logo.svg";
-import "../static/css/App.css";
 import Navigation from './Navigation';
+import Experiments from './Experiments';
 
 const App = () => {
   return (
     <div className="App">
       <Navigation />
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Experiments />
     </div>
   );
 };
