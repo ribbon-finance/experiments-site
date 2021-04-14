@@ -27,7 +27,7 @@ const Navigation = () => {
   };
 
   return (
-    <Navbar color="light" light expand>
+    <Navbar expand>
       <NavbarBrand href="/">
         <img
           src={logo}
