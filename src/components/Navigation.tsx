@@ -1,6 +1,6 @@
 import React from "react";
 import { Navbar, NavbarBrand, Button } from "reactstrap";
-import logo from "./assets/logo.svg";
+import logo from "../static/images/logo.svg";
 
 declare global {
   interface Window {
