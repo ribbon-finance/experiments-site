@@ -3,7 +3,7 @@ import { Container, Row, Col } from "reactstrap";
 import "../static/css/Experiments.css";
 
 const Experiments = () => {
-  return (
+  return ( 
     <Container className="experiments-container">
       <Row>
         <Col className="experiments-column">
