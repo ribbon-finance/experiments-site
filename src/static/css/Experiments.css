@@ -1,0 +1,22 @@
+.experiments-container {
+    margin-left: 0px !important;
+}
+
+.experiments-column {
+    margin-top: 25px;
+}
+
+.experiments-list {
+  list-style-type: none;
+  font-size: 18px;
+  padding-left: 0px;
+}
+
+.experiments-list-item {
+    margin-top: 20px;
+}
+
+.emoji {
+    display: inline-block;
+    margin-right: 10px;
+}
