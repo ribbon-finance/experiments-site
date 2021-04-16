@@ -20,6 +20,7 @@ root html, body, .App {
 
 .experiments-column {
     margin-top: 10vh;
+    padding-bottom: 10vh;
 }
 
 /* .experiments-list {
@@ -41,6 +42,22 @@ root html, body, .App {
     margin-right: 10px;
 }
 
+
+.title-section {
+    font-size: 24px;
+    font-weight: 600;
+    padding: 10px;
+}
+
+.switch-label {
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.custom-control-label {
+    padding-top: 5%;
+}
 
 /* card styling */
 
