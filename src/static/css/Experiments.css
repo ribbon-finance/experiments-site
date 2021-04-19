@@ -95,6 +95,7 @@ root html, body, .App {
     /* background-color: rgb(212, 212, 212) !important; */
     border: 1px solid rgb(43, 43, 43);
     border-radius: 8px;
+    min-height: 30vh;
 }
 
 .button-section {
@@ -103,4 +104,10 @@ root html, body, .App {
 
 .button-detail {
     border: 10px;
+}
+
+
+/* detail page */
+.progress-section {
+    padding-top: 2rem;
 }

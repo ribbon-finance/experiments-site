@@ -1,18 +1,21 @@
 import React, { useState } from 'react'
 // import { Link } from 'react-router-dom'
-import { Container, Row, Col, Alert, Card, Progress, CardBody, CardTitle, CardSubtitle, CardText, FormGroup, Label, Input, CustomInput, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap";
+import { Container, Row, Col, Alert, Card, Progress, CardBody, CardText, FormGroup, Label, Input, CustomInput, DropdownToggle, DropdownMenu, DropdownItem, UncontrolledButtonDropdown, Nav, NavItem, NavLink, TabContent, TabPane } from "reactstrap";
 import "../static/css/Experiments.css";
+import classnames from 'classnames';
  
 
 const ExperimentDetail = () => {
 
-    const [data] = useState([
+    const data = [
         { id: "1", emojis: "🚀💸", name:"Up Only WBTC" , contract: "OxSalo12345", assetPrice: "1.00", currency: "$", totalAssets: "1000", totalAUM: "10000", baseAsset: "WBTC"},
-      ]);
+      ];
 
-    const [dropdownOpen, setOpen] = useState(false);
+    const [activeTab, setActiveTab] = useState('1');
 
-    const toggle = () => setOpen(!dropdownOpen);
+    const toggle = (tab: any) => {
+        if(activeTab !== tab) setActiveTab(tab);
+    }
 
     return (
         <Container className="experiments-container container h-100">
@@ -23,35 +26,142 @@ const ExperimentDetail = () => {
                     <div>
                         {data.map(item => (
                             <div className="title-section"><div className="emoji">{item.emojis}</div>{item.name}
-                            <CustomInput className="switch-label float-right" type="switch" id="exampleCustomSwitch" name="customSwitch" label="Approve Vault" />
+                            <CustomInput className="switch-label float-right" type="switch" id="approveSwitch" name="approveSwitch" label="Approve Vault" />
+                            
                             </div>
                         ))}                        
                     </div>
-                    
                     <Alert color="warning">
                         ⚠️ <strong>WARNING</strong> this an experiment of an experiment, of a series of experiments, made by apes and for them.<br></br>Proceed with extreme caution.
                     </Alert>
-
-                    <Card className="mini-card">
-                        <CardBody>
-                            <CardTitle tag="h5">Details</CardTitle>
-                            <CardSubtitle tag="h6">Some fine details of above</CardSubtitle>
-                            <CardText>
-                                <div> 
-                                    <ul>
-                                        <li>Vault: 📃Contract</li>
-                                        <li>ICE price (CoinGecko 🦎): $7.6400</li>
-                                        <li>Deposit Limit: 12,000.0 ICE</li>
-                                        <li>Total Assets: 6,127.43 ICE</li>
-                                        <li>Total AUM: $46,813.57</li>
-                                    </ul>
-                                </div>
-                            </CardText>
-                        </CardBody>
-                        <div>
-                            <Progress color="danger" value="75" />
-                        </div>
-                    </Card>
+                    <Nav pills justified>
+                        <NavItem>
+                        <NavLink
+                            className={classnames({ active: activeTab === '1' })}
+                            onClick={() => { toggle('1'); }}
+                        >
+                            Details
+                        </NavLink>
+                        </NavItem>
+                        <NavItem>
+                        <NavLink
+                            className={classnames({ active: activeTab === '2' })}
+                            onClick={() => { toggle('2'); }}
+                        >
+                            Wallet
+                        </NavLink>
+                        </NavItem>
+                        <NavItem>
+                        <NavLink
+                            className={classnames({ active: activeTab === '3' })}
+                            onClick={() => { toggle('3'); }}
+                        >
+                            Contracts
+                        </NavLink>
+                        </NavItem>
+                    </Nav>
+                    <TabContent activeTab={activeTab}>
+                        <TabPane tabId="1">
+                        <Row>
+                            <Col sm="12">
+                                <Card className="mini-card">
+                                    <Row className="content-section container-fluid"> 
+                                        <Col xs="6">
+                                            <div className="token">
+                                                <div className="main-text"><strong>WBTC price:</strong> $55,960.00</div>
+                                            </div>
+                                            <div className="deposit-limit">
+                                                <div className="main-text"><strong>Deposit Limit:</strong> 200.00 WBTC</div>
+                                            </div>
+                                            <div className="total-assets">
+                                                <div className="main-text"><strong>Total Assets:</strong> 77.66 WBTC</div>
+                                            </div>
+                                        </Col>
+                                        <Col xs="6">
+                                            <div className="vault">
+                                                <div className="main-text"> <strong>Vault:</strong>
+                                                <a href="https://etherscan.io/" className="sub-text"> Contract</a></div>
+                                            </div>
+                                            <div className="version">
+                                                <div className="main-text"><strong>Version:</strong> 0.3.5</div>
+                                            </div>
+                                        </Col>
+                                    </Row>
+                                    <Row className="container progress-section">
+                                        <Col xs="12">
+                                            <div className="progress-details">
+                                                <div className="price-per-share">
+                                                    <strong>Price Per Share:</strong> 1.0033743
+                                                </div>
+                                                <div className="available-limit">
+                                                    <strong>Available limit:</strong> 122.33 WBTC
+                                                </div>
+                                                <Progress color="danger" value="75" />
+                                            </div>
+                                        </Col>
+                                    </Row>
+                                </Card>
+                            </Col>
+                        </Row>
+                        </TabPane>
+                        <TabPane tabId="2">
+                        <Row>
+                            <Col sm="12">
+                                <Card className="mini-card">
+                                    <CardBody>
+                                        <CardText>
+                                            <Row className="content-section"> 
+                                                <Col sm="12">
+                                                    <div className="strategy-step">
+                                                        <div className="main-text"><strong>Strat. 0: </strong> StrategyLenderYieldOptimiser</div>
+                                                        <div className="sub-text">Address: Contract</div>
+                                                    </div>
+                                                    <div className="strategy-step">
+                                                        <div className="main-text"><strong>Strat. 1: </strong> StrategyMasterchefGenericMod</div>
+                                                        <div className="sub-text">Address: Contract</div>
+                                                    </div>
+                                                    <div className="strategy-step">
+                                                        <div className="main-text"><strong>Strat. 2: </strong> yvWBTCStratMMV1</div>
+                                                        <div className="sub-text">Address: Contract</div>
+                                                    </div>
+                                                </Col>
+                                            </Row>
+                                        </CardText>
+                                    </CardBody>
+                                </Card>
+                            </Col>
+                        </Row>
+                        </TabPane>
+                        <TabPane tabId="3">
+                        <Row>
+                            <Col sm="12">
+                                <Card className="mini-card">
+                                    <CardBody>
+                                        <Row className="content-section"> 
+                                            <Col sm="12">
+                                                <div className="account">
+                                                    <div className="main-text"><strong>Your Account:</strong> 0x0000000000000000000</div>
+                                                </div>
+                                                <div className="vault-shares">
+                                                    <div className="main-text"><strong>Your Vault Shares:</strong> 0</div>
+                                                </div>
+                                                <div className="share-value">
+                                                    <div className="main-text"><strong>Shares Value:</strong> 0</div>
+                                                </div>
+                                                <div className="asset-balance">
+                                                    <div className="main-text"><strong>Your WBTC Balance:</strong> 0</div>
+                                                </div>
+                                                <div className="asset-balance">
+                                                    <div className="main-text"><strong>Your ETH Balance:</strong> 0</div>
+                                                </div>
+                                            </Col>
+                                        </Row>
+                                    </CardBody>
+                                </Card>
+                            </Col>
+                        </Row>
+                        </TabPane>
+                    </TabContent>
                     
                     <div className="button-section">
                         <FormGroup>
@@ -63,32 +173,30 @@ const ExperimentDetail = () => {
                             placeholder="0"
                             />
                             <p>WBTC</p>
-                        
                         </FormGroup>    
                     </div>
                     <Row className="container">
                     <div className="button-section"> 
-
-                    <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
-                        <DropdownToggle caret color="primary">
-                            Deposit
-                        </DropdownToggle>
-                        <DropdownMenu>
-                            <DropdownItem>Deposit</DropdownItem>
-                            <DropdownItem divider />
-                            <DropdownItem>Deposit All</DropdownItem>
-                        </DropdownMenu>
-                    </ButtonDropdown>
-                    <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
-                        <DropdownToggle caret color="secondary">
-                            Withdraw
-                        </DropdownToggle>
-                        <DropdownMenu>
-                            <DropdownItem>Depoist</DropdownItem>
-                            <DropdownItem divider />
-                            <DropdownItem>Deposit All</DropdownItem>
-                        </DropdownMenu>
-                    </ButtonDropdown>    
+                        <UncontrolledButtonDropdown>
+                            <DropdownToggle caret color="primary">
+                                Deposit 
+                            </DropdownToggle>
+                            <DropdownMenu>
+                                <DropdownItem>Deposit</DropdownItem>
+                                <DropdownItem divider />
+                                <DropdownItem>Deposit All</DropdownItem>
+                            </DropdownMenu>
+                        </UncontrolledButtonDropdown>
+                        <UncontrolledButtonDropdown>
+                            <DropdownToggle caret color="secondary">
+                                Withdraw 
+                            </DropdownToggle>
+                            <DropdownMenu>
+                                <DropdownItem>Withdraw</DropdownItem>
+                                <DropdownItem divider />
+                                <DropdownItem>Withdraw All</DropdownItem>
+                            </DropdownMenu>
+                        </UncontrolledButtonDropdown>
                     </div>
                     </Row>
                        
