@@ -17,6 +17,8 @@ const ExperimentDetail = () => {
         if(activeTab !== tab) setActiveTab(tab);
     }
 
+    const navItems = ['Details', 'Wallet', 'Contracts']
+
     return (
         <Container className="experiments-container container h-100">
             <Row className="row h-100 justify-content-center align-items-center">
@@ -35,30 +37,22 @@ const ExperimentDetail = () => {
                         ⚠️ <strong>WARNING</strong> this an experiment of an experiment, of a series of experiments, made by apes and for them.<br></br>Proceed with extreme caution.
                     </Alert>
                     <Nav pills justified>
-                        <NavItem>
-                        <NavLink
-                            className={classnames({ active: activeTab === '1' })}
-                            onClick={() => { toggle('1'); }}
-                        >
-                            Details
-                        </NavLink>
-                        </NavItem>
-                        <NavItem>
-                        <NavLink
-                            className={classnames({ active: activeTab === '2' })}
-                            onClick={() => { toggle('2'); }}
-                        >
-                            Wallet
-                        </NavLink>
-                        </NavItem>
-                        <NavItem>
-                        <NavLink
-                            className={classnames({ active: activeTab === '3' })}
-                            onClick={() => { toggle('3'); }}
-                        >
-                            Contracts
-                        </NavLink>
-                        </NavItem>
+                        {navItems.map((navItem: string, navItemKey: number) => {
+                            const tab = (navItemKey + 1).toString();
+
+                            return (
+                            <NavItem>
+                                <NavLink
+                                className={classnames({ active: activeTab === tab })}
+                                onClick={() => {
+                                    toggle(tab);
+                                }}
+                                >
+                                {navItem}
+                                </NavLink>
+                            </NavItem>
+                            );
+                        })}
                     </Nav>
                     <TabContent activeTab={activeTab}>
                         <TabPane tabId="1">
@@ -199,7 +193,6 @@ const ExperimentDetail = () => {
                         </UncontrolledButtonDropdown>
                     </div>
                     </Row>
-                       
                     </Card>
                 </div>
                 </Col>
