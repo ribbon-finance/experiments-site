@@ -27,7 +27,7 @@ const Navigation = () => {
   };
 
   return (
-    <Navbar expand>
+    <Navbar className="container" expand>
       <NavbarBrand href="/">
         <img
           src={logo}
