@@ -27,14 +27,23 @@ const ExperimentDetail = () => {
                     <Card className="card card-detail">
                     <div>
                         {data.map(item => (
-                            <div className="title-section"><div className="emoji">{item.emojis}</div>{item.name}
-                            <CustomInput className="switch-label float-right" type="switch" id="approveSwitch" name="approveSwitch" label="Approve Vault" />
-                            
+                            <div className="title-section">
+                                <div className="emoji">{item.emojis}</div>{item.name}
+                                <CustomInput className="switch-label float-right" type="switch" id="approveSwitch" name="approveSwitch" label="Approve Vault" />
                             </div>
                         ))}                        
                     </div>
-                    <Alert color="warning">
-                        ⚠️ <strong>WARNING</strong> this an experiment of an experiment, of a series of experiments, made by apes and for them.<br></br>Proceed with extreme caution.
+                    <Alert color="warning" className="d-flex justify-content-md-center">
+                        <Col sm="2">
+                            <div className="warning-icon">
+                                ⚠️ <strong> - WARNING</strong>
+                            </div>
+                        </Col>
+                        <Col sm="10">
+                            <div className="warning-text">
+                            This an experiment of an experiment, of a series of experiments, made by apes and for them. Proceed with extreme caution.
+                            </div>
+                        </Col>
                     </Alert>
                     <Nav pills justified>
                         {navItems.map((navItem: string, navItemKey: number) => {
@@ -61,36 +70,36 @@ const ExperimentDetail = () => {
                                 <Card className="mini-card">
                                     <Row className="content-section container-fluid"> 
                                         <Col xs="6">
-                                            <div className="token">
-                                                <div className="main-text"><strong>WBTC price:</strong> $55,960.00</div>
+                                            <div className="mini-card-list token">
+                                                <div className="label-text"><strong>WBTC price:</strong> <span className="data-text">$55,960.00</span></div>
                                             </div>
-                                            <div className="deposit-limit">
-                                                <div className="main-text"><strong>Deposit Limit:</strong> 200.00 WBTC</div>
+                                            <div className="mini-card-list deposit-limit">
+                                                <div className="label-text"><strong>Deposit Limit:</strong> <span className="data-text">200.00 WBTC</span></div>
                                             </div>
-                                            <div className="total-assets">
-                                                <div className="main-text"><strong>Total Assets:</strong> 77.66 WBTC</div>
+                                            <div className="mini-card-list total-assets">
+                                                <div className="label-text"><strong>Total Assets:</strong> <span className="data-text">77.66 WBTC</span></div>
                                             </div>
                                         </Col>
                                         <Col xs="6">
-                                            <div className="vault">
-                                                <div className="main-text"> <strong>Vault:</strong>
-                                                <a href="https://etherscan.io/" className="sub-text"> Contract</a></div>
+                                            <div className="mini-card-list vault">
+                                                <div className="label-text"> <strong>Vault:</strong>
+                                                <a href="https://etherscan.io/" className="data-text"> Contract</a></div>
                                             </div>
-                                            <div className="version">
-                                                <div className="main-text"><strong>Version:</strong> 0.3.5</div>
+                                            <div className="mini-card-list version">
+                                                <div className="label-text"><strong>Version:</strong> <span className="data-text">0.3.5</span></div>
                                             </div>
                                         </Col>
                                     </Row>
                                     <Row className="container progress-section">
                                         <Col xs="12">
-                                            <div className="progress-details">
-                                                <div className="price-per-share">
-                                                    <strong>Price Per Share:</strong> 1.0033743
+                                            <div className="progress-details text-right">
+                                                <div className="label-text">
+                                                    <strong>Price Per Share:</strong> <span className="data-text">1.0033743</span>
                                                 </div>
-                                                <div className="available-limit">
-                                                    <strong>Available limit:</strong> 122.33 WBTC
+                                                <div className="label-text">
+                                                    <strong>Available limit:</strong> <span className="data-text">122.33 WBTC</span>
                                                 </div>
-                                                <Progress color="danger" value="75" />
+                                                <Progress className="progress-custom" value="75" />
                                             </div>
                                         </Col>
                                     </Row>
@@ -156,43 +165,45 @@ const ExperimentDetail = () => {
                         </Row>
                         </TabPane>
                     </TabContent>
-                    
-                    <div className="button-section">
-                        <FormGroup>
-                            <Label for="exampleNumber">Amount</Label>
-                            <Input
-                            type="number"
-                            name="number"
-                            id="exampleNumber"
-                            placeholder="0"
-                            />
-                            <p>WBTC</p>
-                        </FormGroup>    
+                    <div className="">
+                        <Row>
+                            <Col sm="3">
+                            </Col>
+                            <Col sm="6">
+                                <FormGroup>
+                                    <Label for="exampleNumber">Amount WBTC</Label>
+                                    <Input
+                                    type="number"
+                                    name="number"
+                                    id="exampleNumber"
+                                    placeholder="0"
+                                    />
+                                </FormGroup>
+                            </Col>
+                            <Col sm="3" className="button-section">
+                                <UncontrolledButtonDropdown className="float-right">
+                                    <DropdownToggle caret color="secondary">
+                                        Deposit 
+                                    </DropdownToggle>
+                                    <DropdownMenu>
+                                        <DropdownItem>Deposit</DropdownItem>
+                                        <DropdownItem divider />
+                                        <DropdownItem>Deposit All</DropdownItem>
+                                    </DropdownMenu>
+                                </UncontrolledButtonDropdown>
+                                <UncontrolledButtonDropdown className="float-right">
+                                    <DropdownToggle caret color="secondary">
+                                        Withdraw 
+                                    </DropdownToggle>
+                                    <DropdownMenu>
+                                        <DropdownItem>Withdraw</DropdownItem>
+                                        <DropdownItem divider />
+                                        <DropdownItem>Withdraw All</DropdownItem>
+                                    </DropdownMenu>
+                                </UncontrolledButtonDropdown> 
+                            </Col>
+                        </Row>
                     </div>
-                    <Row className="container">
-                    <div className="button-section"> 
-                        <UncontrolledButtonDropdown>
-                            <DropdownToggle caret color="primary">
-                                Deposit 
-                            </DropdownToggle>
-                            <DropdownMenu>
-                                <DropdownItem>Deposit</DropdownItem>
-                                <DropdownItem divider />
-                                <DropdownItem>Deposit All</DropdownItem>
-                            </DropdownMenu>
-                        </UncontrolledButtonDropdown>
-                        <UncontrolledButtonDropdown>
-                            <DropdownToggle caret color="secondary">
-                                Withdraw 
-                            </DropdownToggle>
-                            <DropdownMenu>
-                                <DropdownItem>Withdraw</DropdownItem>
-                                <DropdownItem divider />
-                                <DropdownItem>Withdraw All</DropdownItem>
-                            </DropdownMenu>
-                        </UncontrolledButtonDropdown>
-                    </div>
-                    </Row>
                     </Card>
                 </div>
                 </Col>

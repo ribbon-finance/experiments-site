@@ -17,7 +17,7 @@ const ExperimentsList = () => {
             <Row className="row h-100 justify-content-center align-items-center">
                 <Col className="experiments-column col-12">
                 <div>
-                    <h3>
+                    <h3 className="title-section">
                     <div className="emoji">🧪</div> Experimental
                     </h3>
 
@@ -28,18 +28,12 @@ const ExperimentsList = () => {
 
                 <Card>
                     <ListGroup className="experiments-list">
-                        <ListGroupItem className="experiments-list-item">
-                        <div className="emoji">🚀💸</div> Up Only WBTC
-                        <Button className="float-right" color="primary" href="/up-only" size="sm"> <strong>+</strong> </Button>
-                        </ListGroupItem>
-                        <ListGroupItem className="experiments-list-item">
-                        <div className="emoji">⏰🏦</div> WBTC Theta Vault
-                        <Button className="float-right" color="primary" href="#" size="sm"> <strong>+</strong> </Button>
-                        </ListGroupItem>
-                        <ListGroupItem className="experiments-list-item">
-                        <div className="emoji">🎢🤑</div> Vega Vault
-                        <Button className="float-right" color="primary" href="#" size="sm"> <strong>+</strong> </Button>
-                        </ListGroupItem>
+                        {data.map(item => (
+                            <ListGroupItem className="experiments-list-item">
+                            <div className="emoji">{item.emojis}</div> {item.name}
+                            <Button className="float-right" color="primary" href="/up-only" size="sm"> <strong>+</strong> </Button>
+                            </ListGroupItem>
+                        ))}
                     </ListGroup>
                 </Card>
 
