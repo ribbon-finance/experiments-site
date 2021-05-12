@@ -6,16 +6,21 @@
     font-style: normal;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;300;400;700&family=IBM+Plex+Sans:wght@100;300;400;700&display=swap');
+
+/* @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap'); */
 
 
+/* font-family: 'IBM Plex Mono', monospace;
+font-family: 'IBM Plex Sans', sans-serif; */
 
 
 root html, body, .App {
-    font-family: 'Share Tech Mono', monospace;
+    font-family: 'vcr_osd_monoregular', monospace;
     font-weight: normal;
     font-style: normal;
-    background-color: #f5f5f5 !important;
+    background: rgb(31,29,28);
+    background: linear-gradient(333deg, rgba(31,29,28,1) 42%, rgba(139,45,62,1) 100%);
 }
 
 .experiments-column {
@@ -23,18 +28,16 @@ root html, body, .App {
     padding-bottom: 10vh;
 }
 
-/* .experiments-list {
-  list-style-type: none;
-  font-size: 18px;
-  padding-left: 30px;
-} */
+.experiments-list {
+    background-color:#252322 !important;
+}
 
 .experiments-list-item {
     border: 1px solid rgb(158, 158, 158, 0.3) !important;
 }
 
 .experiments-list-item:hover {
-    background-color: #410e172c;
+    background-color: #1f1d1c;
 }
 
 .emoji {
@@ -47,6 +50,7 @@ root html, body, .App {
     font-size: 24px;
     font-weight: 600;
     padding: 10px;
+    font-family: 'vcr_osd_monoregular', monospace;
 }
 
 .switch-label {
@@ -61,11 +65,12 @@ root html, body, .App {
 
 /* card styling */
 
-.card{
-    background: #fff;
+.card {
+    background: #1f1d1c !important;
     border-radius: 4px;
     transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
     padding: 20px 36px 20px 36px;
+    border-color: #303032 !important;
     box-shadow: 
         0 0.46875rem 2.1875rem rgb(59 62 102 / 3%),
         0 0.9375rem 1.40625rem rgb(59 62 102 / 3%),
@@ -73,13 +78,11 @@ root html, body, .App {
         0 0.125rem 0.1875rem rgb(59 62 102 / 3%);
 }
 
-/* .card:hover{
-     transform: scale(1.01);
-  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
-} */
-
 .card li{
   font-weight: 600;
+  background-color:#252322;
+  color: #fff;
+  font-family: 'vcr_osd_monoregular', monospace;
 }
 
 .card-detail {
@@ -95,6 +98,7 @@ root html, body, .App {
     /* background-color: rgb(212, 212, 212) !important; */
     border-radius: 8px;
     min-height: 30vh;
+    color: #fff;
 }
 
 .button-section {
@@ -107,6 +111,148 @@ root html, body, .App {
 
 
 /* detail page */
+
 .progress-section {
     padding-top: 2rem;
 }
+
+/* VERSION 2 */
+
+.title-section {
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.warning-text {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 14px;
+}
+
+.alert-warning {
+    font-family: 'vcr_osd_monoregular', monospace;
+}
+
+.nav-pill, .nav-link {
+    text-transform: uppercase;
+    background-color: #252322;
+    font-family: 'vcr_osd_monoregular', monospace;
+    /* color:#303031; */
+}
+
+.nav-link.active {
+    background-color: #8e2d3f !important;
+    color: #fefefe;
+}
+
+.nav {
+    color: #fefefe;
+    font-size: 14px;
+}
+
+
+/* switch style */
+.custom-control-input:focus~.custom-control-label::before {
+	/* when the button is toggled off 
+  it is still in focus and a violet border will appear */
+	border-color: #303031 !important;
+	/* box shadow is blue by default
+  but we do not want any shadow hence we have set 
+  all the values as 0 */
+	box-shadow: 0 0 0 0rem rgba(0, 0, 0, 0) !important;
+}
+
+/*sets the background color of switch to violet when it is checked*/
+.custom-control-input:checked~.custom-control-label::before {
+	border-color: #7ffecc !important;
+	background-color: #7ffecc !important;
+}
+
+
+/*sets the background color of switch when it is active*/
+.custom-control-input:active~.custom-control-label::before {
+	border-color: #7ffecc !important;
+	background-color: #7ffecc!important;
+}
+
+.mini-card-list {
+    padding: 0.5rem 0rem;
+}
+
+.label-text {
+    color: #656464;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-family: 'vcr_osd_monoregular', monospace;
+}
+
+span.data-text {
+    color: #fff;
+}
+
+.progress-section {
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.progress-bar {
+    background-color: #fff !important;
+}
+
+.progress-custom {
+    background-color: #383635 !important;
+}
+
+.button-section {
+    padding-top: 2rem;
+}
+
+.btn-group {
+    border: 10px !important;
+}
+
+
+.btn {
+    background-color: #331a1f !important;
+    border-color: #331a1f !important;
+    padding: .50rem 1.5rem !important;
+    font-size: 12px !important;
+    text-transform: uppercase;
+    font-family: 'vcr_osd_monoregular', monospace;
+    opacity: 0.6;
+}
+
+.btn:hover {
+    background-color: #8e2d3f !important;
+    color:#fff;
+    border: 1px solid #8e2d3f !important;
+}
+
+button.dropdown-toggle {
+    margin-left: 0.3rem !important;
+}
+
+label {
+    color:#fff;
+    font-size: 10px;
+    font-family: 'vcr_osd_monoregular', monospace;
+    text-transform: uppercase;
+    padding-top: 5px;
+}
+
+input[type=number] {
+    background-color: #252322;
+    color: #6d757d;
+    border: none;
+    font-family: 'vcr_osd_monoregular', monospace;
+}
+
+a.data-text {
+    color:#8e2d3f !important;
+}
+
+.list-button {
+    background-color: #363433 !important;
+    color:#fff;
+    border: 1px solid #fff !important;
+}
+
