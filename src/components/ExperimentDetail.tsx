@@ -23,14 +23,17 @@ import {
   NavLink,
   TabContent,
   TabPane,
+  Button
 } from "reactstrap";
 
 const ExperimentDetail = ({
   purchaseAmount,
   updatePurchaseAmount,
+  purchase,
 }: {
-  purchaseAmount: string,
+  purchaseAmount: string;
   updatePurchaseAmount: any;
+  purchase: any;
 }) => {
   const data = [
     {
@@ -138,6 +141,7 @@ const ExperimentDetail = ({
                     </FormGroup>
                   </Col>
                   <Col sm="3" className="button-section">
+                    <Button onClick={purchase}>Purchase</Button>
                     <UncontrolledButtonDropdown className="float-right">
                       <DropdownToggle caret color="secondary">
                         Deposit
