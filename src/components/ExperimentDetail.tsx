@@ -4,7 +4,6 @@ import classnames from "classnames";
 import DetailsTab from "./DetailsTab";
 import WalletTab from "./WalletTab";
 import ContractsTab from "./ContractsTab";
-// import { Link } from 'react-router-dom'
 import {
   Container,
   Row,
@@ -26,8 +25,13 @@ import {
   TabPane,
 } from "reactstrap";
 
-
-const ExperimentDetail = () => {
+const ExperimentDetail = ({
+  purchaseAmount,
+  updatePurchaseAmount,
+}: {
+  purchaseAmount: string,
+  updatePurchaseAmount: any;
+}) => {
   const data = [
     {
       id: "1",
@@ -122,12 +126,14 @@ const ExperimentDetail = () => {
                   <Col sm="3"></Col>
                   <Col sm="6">
                     <FormGroup>
-                      <Label for="exampleNumber">Amount WBTC</Label>
+                      <Label for="exampleNumber">Purchase Amount</Label>
                       <Input
                         type="number"
                         name="number"
                         id="exampleNumber"
                         placeholder="0"
+                        value={purchaseAmount}
+                        onChange={updatePurchaseAmount}
                       />
                     </FormGroup>
                   </Col>

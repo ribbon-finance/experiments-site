@@ -14,8 +14,17 @@ class UpOnlyWBTC extends Component<
     };
   }
 
+  updatePurchaseAmount = ({ target: { value } }: { target: any }) => {
+    this.setState({ purchaseAmount: value });
+  };
+
   render = () => {
-    return <ExperimentDetail />;
+    return (
+      <ExperimentDetail
+        purchaseAmount={this.state.purchaseAmount}
+        updatePurchaseAmount={this.updatePurchaseAmount}
+      />
+    );
   };
 }
 
