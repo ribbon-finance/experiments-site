@@ -65,7 +65,7 @@ const ExperimentDetail = ({
             <Card className="card card-detail">
               <div>
                 {data.map((item) => (
-                  <div className="title-section">
+                  <div className="title-section" key={item.id}>
                     <div className="emoji">{item.emojis}</div>
                     {item.name}
                     <CustomInput
@@ -100,7 +100,7 @@ const ExperimentDetail = ({
                   const tab = (navItemKey + 1).toString();
 
                   return (
-                    <NavItem>
+                    <NavItem key={navItem}>
                       <NavLink
                         className={classnames({ active: activeTab === tab })}
                         onClick={() => {
