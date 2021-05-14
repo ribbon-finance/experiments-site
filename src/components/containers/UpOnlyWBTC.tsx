@@ -1,25 +1,15 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import ExperimentDetail from "../ExperimentDetail";
 import stakedPut from "../../contracts/stakedPut";
 
-class UpOnlyWBTC extends Component<
-  any,
-  {
-    purchaseAmount: string;
-  }
-> {
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      purchaseAmount: "0",
-    };
-  }
+const UpOnlyWBTC = () => {
+  const [purchaseAmount, setPurchaseAmount] = useState(0);
 
-  updatePurchaseAmount = ({ target: { value } }: { target: any }) => {
-    this.setState({ purchaseAmount: value });
+  const updatePurchaseAmount = ({ target: { value } }: { target: any }) => {
+    setPurchaseAmount(value);
   };
 
-  purchase = async () => {
+  const purchase = async () => {
     try {
       const {
         wbtcSize,
@@ -29,7 +19,7 @@ class UpOnlyWBTC extends Component<
         totalCost,
         currentPrice,
         expiry,
-      } = await stakedPut.methods.getInputs(this.state.purchaseAmount).call();
+      } = await stakedPut.methods.getInputs(purchaseAmount).call();
       // TODO: Call buyInstrument with inputs
       console.log(
         `wbtcSize: ${wbtcSize}`,
@@ -45,15 +35,13 @@ class UpOnlyWBTC extends Component<
     }
   };
 
-  render = () => {
-    return (
-      <ExperimentDetail
-        purchaseAmount={this.state.purchaseAmount}
-        updatePurchaseAmount={this.updatePurchaseAmount}
-        purchase={this.purchase}
-      />
-    );
-  };
-}
+  return (
+    <ExperimentDetail
+      purchaseAmount={purchaseAmount}
+      updatePurchaseAmount={updatePurchaseAmount}
+      purchase={purchase}
+    />
+  );
+};
 
 export default UpOnlyWBTC;

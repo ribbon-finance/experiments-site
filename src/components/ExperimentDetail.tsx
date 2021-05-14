@@ -31,7 +31,7 @@ const ExperimentDetail = ({
   updatePurchaseAmount,
   purchase,
 }: {
-  purchaseAmount: string;
+  purchaseAmount: number;
   updatePurchaseAmount: any;
   purchase: any;
 }) => {
