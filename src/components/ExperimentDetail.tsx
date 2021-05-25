@@ -4,7 +4,6 @@ import classnames from "classnames";
 import DetailsTab from "./DetailsTab";
 import WalletTab from "./WalletTab";
 import ContractsTab from "./ContractsTab";
-// import { Link } from 'react-router-dom'
 import {
   Container,
   Row,
@@ -24,10 +23,18 @@ import {
   NavLink,
   TabContent,
   TabPane,
+  Button
 } from "reactstrap";
 
-
-const ExperimentDetail = () => {
+const ExperimentDetail = ({
+  purchaseAmount,
+  updatePurchaseAmount,
+  purchase,
+}: {
+  purchaseAmount: number;
+  updatePurchaseAmount: any;
+  purchase: any;
+}) => {
   const data = [
     {
       id: "1",
@@ -58,7 +65,7 @@ const ExperimentDetail = () => {
             <Card className="card card-detail">
               <div>
                 {data.map((item) => (
-                  <div className="title-section">
+                  <div className="title-section" key={item.id}>
                     <div className="emoji">{item.emojis}</div>
                     {item.name}
                     <CustomInput
@@ -93,7 +100,7 @@ const ExperimentDetail = () => {
                   const tab = (navItemKey + 1).toString();
 
                   return (
-                    <NavItem>
+                    <NavItem key={navItem}>
                       <NavLink
                         className={classnames({ active: activeTab === tab })}
                         onClick={() => {
@@ -122,16 +129,19 @@ const ExperimentDetail = () => {
                   <Col sm="3"></Col>
                   <Col sm="6">
                     <FormGroup>
-                      <Label for="exampleNumber">Amount WBTC</Label>
+                      <Label for="exampleNumber">Purchase Amount</Label>
                       <Input
                         type="number"
                         name="number"
                         id="exampleNumber"
                         placeholder="0"
+                        value={purchaseAmount}
+                        onChange={updatePurchaseAmount}
                       />
                     </FormGroup>
                   </Col>
                   <Col sm="3" className="button-section">
+                    <Button onClick={purchase}>Purchase</Button>
                     <UncontrolledButtonDropdown className="float-right">
                       <DropdownToggle caret color="secondary">
                         Deposit
