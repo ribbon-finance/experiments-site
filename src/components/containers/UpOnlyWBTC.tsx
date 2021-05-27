@@ -16,24 +16,30 @@ const UpOnlyWBTC = () => {
         expDigg,
         tradeAmt,
         premium,
-        totalCost,
         currentPrice,
         expiry,
       } = await stakedPut.methods.getInputs(purchaseAmount).call();
-      // TODO: Call buyInstrument with inputs
-      console.log(
-        `wbtcSize: ${wbtcSize}`,
-        `expDigg: ${expDigg}`,
-        `tradeAmt: ${tradeAmt}`,
-        `premium: ${premium}`,
-        `totalCost: ${totalCost}`,
-        `currentPrice: ${currentPrice}`,
-        `expiry: ${expiry}`
-      );
+      const encodedBuyInstrumentCall = await (
+        await stakedPut.methods.buyInstrument(
+          [
+            currentPrice,
+            wbtcSize,
+            premium + 1,
+            expiry,
+            purchaseAmount,
+            tradeAmt,
+            wbtcSize,
+            expDigg,
+          ]
+        )
+      ).encodeABI();
+      console.log(encodedBuyInstrumentCall);
     } catch (err) {
       console.error(err);
     }
   };
+
+  console.log(Object.keys(window.ethereum));
 
   return (
     <ExperimentDetail
