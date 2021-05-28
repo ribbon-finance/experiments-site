@@ -16,6 +16,7 @@ const UpOnlyWBTC = () => {
         expDigg,
         tradeAmt,
         premium,
+        totalCost,
         currentPrice,
         expiry,
       } = await stakedPut.methods.getInputs(purchaseAmount).call();
@@ -33,13 +34,20 @@ const UpOnlyWBTC = () => {
           ]
         )
       ).encodeABI();
-      console.log(encodedBuyInstrumentCall);
+      
+      await window.ethereum.request({
+        method: 'eth_sendTransaction',
+        params: [{
+          to: stakedPut._address,
+          from: window.ethereum.selectedAddress,
+          value: totalCost,
+          data: encodedBuyInstrumentCall
+        }],
+      });
     } catch (err) {
       console.error(err);
     }
   };
-
-  console.log(Object.keys(window.ethereum));
 
   return (
     <ExperimentDetail
