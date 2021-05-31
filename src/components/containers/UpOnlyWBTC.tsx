@@ -22,11 +22,9 @@ const UpOnlyWBTC = () => {
       } = await stakedPut.methods.getInputs(purchaseAmount).call();
       const encodedBuyInstrumentCall = await (
         await stakedPut.methods.buyInstrument([
-          process.env.REACT_APP_NODE_ENV ? "5000000000000" : currentPrice,
+          currentPrice,
           wbtcSize,
-          process.env.REACT_APP_NODE_ENV
-            ? "1000000000000000000000"
-            : premium + 1,
+          premium + 1,
           expiry,
           purchaseAmount,
           tradeAmt,
