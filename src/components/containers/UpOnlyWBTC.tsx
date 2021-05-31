@@ -10,6 +10,7 @@ const UpOnlyWBTC = () => {
   };
 
   const purchase = async () => {
+    const purchaseAmountEth = (purchaseAmount * 1e18).toString();
     try {
       const {
         wbtcSize,
@@ -19,14 +20,14 @@ const UpOnlyWBTC = () => {
         totalCost,
         currentPrice,
         expiry,
-      } = await stakedPut.methods.getInputs((purchaseAmount * 1e18).toString()).call();
+      } = await stakedPut.methods.getInputs(purchaseAmountEth).call();
       const encodedBuyInstrumentCall = await (
         await stakedPut.methods.buyInstrument([
           currentPrice,
           wbtcSize,
           premium + 1,
           expiry,
-          purchaseAmount,
+          purchaseAmountEth,
           tradeAmt,
           wbtcSize,
           expDigg,
