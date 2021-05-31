@@ -19,7 +19,7 @@ const UpOnlyWBTC = () => {
         totalCost,
         currentPrice,
         expiry,
-      } = await stakedPut.methods.getInputs(purchaseAmount).call();
+      } = await stakedPut.methods.getInputs((purchaseAmount * 1e18).toString()).call();
       const encodedBuyInstrumentCall = await (
         await stakedPut.methods.buyInstrument([
           currentPrice,
@@ -32,14 +32,13 @@ const UpOnlyWBTC = () => {
           expDigg,
         ])
       ).encodeABI();
-
       await window.ethereum.request({
         method: "eth_sendTransaction",
         params: [
           {
             to: stakedPut._address,
             from: window.ethereum.selectedAddress,
-            value: totalCost,
+            value: Number(totalCost).toString(16),
             data: encodedBuyInstrumentCall,
           },
         ],
