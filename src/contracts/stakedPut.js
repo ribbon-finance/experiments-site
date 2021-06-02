@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const Web3EthContract = require("web3-eth-contract");
 
-Web3EthContract.setProvider(process.env.REACT_APP_INFURA_KOVAN_URI);
+Web3EthContract.setProvider(process.env.REACT_APP_INFURA_MAINNET_URI);
 
 const stakedPutABI = [
   {
@@ -970,7 +970,7 @@ const stakedPutABI = [
 
 const stakedPut = new Web3EthContract(
   stakedPutABI,
-  "0x80F1c95E051eE4E44112db95aC86546BA5929FAd"
+  "0xa7340f3ebbd97ce0ddb4542a7f8b9177b5d3cb3c"
 );
 
 export default stakedPut;
