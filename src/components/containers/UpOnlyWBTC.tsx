@@ -10,6 +10,7 @@ const UpOnlyWBTC = () => {
   };
 
   const purchase = async () => {
+    const purchaseAmountEth = (purchaseAmount * 1e18).toString();
     try {
       const {
         wbtcSize,
@@ -19,17 +20,30 @@ const UpOnlyWBTC = () => {
         totalCost,
         currentPrice,
         expiry,
-      } = await stakedPut.methods.getInputs(purchaseAmount).call();
-      // TODO: Call buyInstrument with inputs
-      console.log(
-        `wbtcSize: ${wbtcSize}`,
-        `expDigg: ${expDigg}`,
-        `tradeAmt: ${tradeAmt}`,
-        `premium: ${premium}`,
-        `totalCost: ${totalCost}`,
-        `currentPrice: ${currentPrice}`,
-        `expiry: ${expiry}`
-      );
+      } = await stakedPut.methods.getInputs(purchaseAmountEth).call();
+      const encodedBuyInstrumentCall = await (
+        await stakedPut.methods.buyInstrument([
+          currentPrice,
+          wbtcSize,
+          premium + 1,
+          expiry,
+          purchaseAmountEth,
+          tradeAmt,
+          wbtcSize,
+          expDigg,
+        ])
+      ).encodeABI();
+      await window.ethereum.request({
+        method: "eth_sendTransaction",
+        params: [
+          {
+            to: stakedPut._address,
+            from: window.ethereum.selectedAddress,
+            value: Number(totalCost).toString(16),
+            data: encodedBuyInstrumentCall,
+          },
+        ],
+      });
     } catch (err) {
       console.error(err);
     }

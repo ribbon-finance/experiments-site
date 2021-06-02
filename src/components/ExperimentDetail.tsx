@@ -134,7 +134,7 @@ const ExperimentDetail = ({
                         type="number"
                         name="number"
                         id="exampleNumber"
-                        placeholder="0"
+                        min={0.01}
                         value={purchaseAmount}
                         onChange={updatePurchaseAmount}
                       />
