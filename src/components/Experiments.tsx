@@ -6,8 +6,8 @@ const Experiments = () => {
 
   const data = [
     { id: "1", emojis: "🚀💸", name:"Up Only WBTC" },
-    { id: "2", emojis: "⏰🏦", name:"WBTC Theta Vault" },
-    { id: "3", emojis: "🎢🤑", name:"Vega Vault" }
+    //{ id: "2", emojis: "⏰🏦", name:"WBTC Theta Vault" },
+    // { id: "3", emojis: "🎢🤑", name:"Vega Vault" }
   ];
 
   return (

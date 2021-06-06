@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import "../static/css/Experiments.css";
 import classnames from "classnames";
 import DetailsTab from "./DetailsTab";
-import WalletTab from "./WalletTab";
-import ContractsTab from "./ContractsTab";
+// import WalletTab from "./WalletTab";
+// import ContractsTab from "./ContractsTab";
 import {
   Container,
   Row,
@@ -14,10 +14,6 @@ import {
   Label,
   Input,
   CustomInput,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledButtonDropdown,
   Nav,
   NavItem,
   NavLink,
@@ -30,10 +26,12 @@ const ExperimentDetail = ({
   purchaseAmount,
   updatePurchaseAmount,
   purchase,
+  totalCost,
 }: {
   purchaseAmount: number;
   updatePurchaseAmount: any;
   purchase: any;
+  totalCost: any;
 }) => {
   const data = [
     {
@@ -115,13 +113,21 @@ const ExperimentDetail = ({
               </Nav>
               <TabContent activeTab={activeTab}>
                 <TabPane tabId="1">
-                  <DetailsTab></DetailsTab>
+                  <DetailsTab
+                    totalCost={totalCost}
+                  />
                 </TabPane>
                 <TabPane tabId="2">
-                  <WalletTab></WalletTab>
+                  <DetailsTab
+                    totalCost={totalCost}
+                  />
+                  {/* <WalletTab></WalletTab> */}
                 </TabPane>
                 <TabPane tabId="3">
-                  <ContractsTab></ContractsTab>
+                  <DetailsTab
+                    totalCost={totalCost}
+                  />
+                  {/* <ContractsTab></ContractsTab> */}
                 </TabPane>
               </TabContent>
               <div className="">
@@ -140,28 +146,8 @@ const ExperimentDetail = ({
                       />
                     </FormGroup>
                   </Col>
-                  <Col sm="3" className="button-section">
+                  <Col sm="3" className="button-section float-right">
                     <Button onClick={purchase}>Purchase</Button>
-                    <UncontrolledButtonDropdown className="float-right">
-                      <DropdownToggle caret color="secondary">
-                        Deposit
-                      </DropdownToggle>
-                      <DropdownMenu>
-                        <DropdownItem>Deposit</DropdownItem>
-                        <DropdownItem divider />
-                        <DropdownItem>Deposit All</DropdownItem>
-                      </DropdownMenu>
-                    </UncontrolledButtonDropdown>
-                    <UncontrolledButtonDropdown className="float-right">
-                      <DropdownToggle caret color="secondary">
-                        Withdraw
-                      </DropdownToggle>
-                      <DropdownMenu>
-                        <DropdownItem>Withdraw</DropdownItem>
-                        <DropdownItem divider />
-                        <DropdownItem>Withdraw All</DropdownItem>
-                      </DropdownMenu>
-                    </UncontrolledButtonDropdown>
                   </Col>
                 </Row>
               </div>

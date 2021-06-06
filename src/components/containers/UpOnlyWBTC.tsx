@@ -4,6 +4,7 @@ import stakedPut from "../../contracts/stakedPut";
 
 const UpOnlyWBTC = () => {
   const [purchaseAmount, setPurchaseAmount] = useState(0);
+  const [putPriceETH, setPutPriceETH] = useState('');
 
   const updatePurchaseAmount = ({ target: { value } }: { target: any }) => {
     setPurchaseAmount(value);
@@ -21,6 +22,8 @@ const UpOnlyWBTC = () => {
         currentPrice,
         expiry,
       } = await stakedPut.methods.getInputs(purchaseAmountEth).call();
+      const putPrice = (totalCost / 1e18); 
+      setPutPriceETH(putPrice.toFixed(6));
       const encodedBuyInstrumentCall = await (
         await stakedPut.methods.buyInstrument([
           currentPrice,
@@ -54,6 +57,7 @@ const UpOnlyWBTC = () => {
       purchaseAmount={purchaseAmount}
       updatePurchaseAmount={updatePurchaseAmount}
       purchase={purchase}
+      totalCost={putPriceETH}
     />
   );
 };
