@@ -8,12 +8,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;300;400;700&family=IBM+Plex+Sans:wght@100;300;400;700&display=swap');
 
-/* @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap'); */
-
-
-/* font-family: 'IBM Plex Mono', monospace;
-font-family: 'IBM Plex Sans', sans-serif; */
-
 
 root html, body, .App {
     font-family: 'vcr_osd_monoregular', monospace;
@@ -136,16 +130,16 @@ root html, body, .App {
     text-transform: uppercase;
     background-color: #252322;
     font-family: 'vcr_osd_monoregular', monospace;
-    /* color:#303031; */
+    color: #a5a5a4 !important;
 }
 
 .nav-link.active {
-    background-color: #8e2d3f !important;
-    color: #fefefe;
+    background-color: #331a1f !important;
+    color: #fefefe !important;
 }
 
 .nav {
-    color: #fefefe;
+    color: #a5a5a4;
     font-size: 14px;
 }
 
@@ -212,7 +206,8 @@ span.data-text {
 
 
 .btn {
-    background-color: #331a1f !important;
+    /* background-color: #331a1f !important; */
+    background-color: #8e2d3f !important;
     border-color: #331a1f !important;
     padding: .50rem 1.5rem !important;
     font-size: 12px !important;
@@ -256,3 +251,36 @@ a.data-text {
     border: 1px solid #fff !important;
 }
 
+/* MetaMask UI */
+
+.address-section {
+    background-color: rgba(8, 9, 14, 0.35);
+    -webkit-box-align: center;
+    align-items: center;
+    height: fit-content;
+    display: flex;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-right: 1rem;
+    font-family: 'vcr_osd_monoregular', monospace;
+    color:#fff;
+    font-size: 10px !important;
+    text-transform: uppercase;
+    font-family: 'vcr_osd_monoregular', monospace;
+    /* display: none; */
+}
+
+.connected-address {
+    background-color: rgb(22, 206, 185) !important;
+    width: 8px;
+    height: 8px;
+    background-color: white;
+    border-radius: 4px;
+    margin-right: 8px;
+    overflow: hidden;
+    display: none;
+}
+
+.address-text {
+    padding: 0px 10px;
+}
